@@ -23,7 +23,7 @@ const Welcome = () => {
   return (
     <Card>
       <Button
-        icon={flag && <i className="fa fa-spinner" aria-hidden="true"></i>}
+        loading={flag}
         onClick={() => {
           setFlag(true);
           connectHandler();
