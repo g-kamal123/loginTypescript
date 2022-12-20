@@ -46,6 +46,14 @@ const Register = () => {
         }
         else
         setPassCheck(false)
+        if(data?.cnfpassword){
+        let pass:string = data?.cnfpassword;
+        if(pass!==e){
+          setCnfpass(true);
+        }
+        else
+        setCnfpass(false);
+        }
       }
       if(type==="cnfpassword"){
         let pass:string = data?.password? data.password:"";
