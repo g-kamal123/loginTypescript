@@ -16,7 +16,7 @@ const Welcome = () => {
   const connectHandler = () => {
     let web_window: any = window.open(
       "https://app.clickup.com/t/85zrggb2g",
-      "",
+      "popup",
       "toolbar=no,status=no,menubar=no,location=center,scrollbars=yes,top=200,left=250,resizable=no,height=400,width=500"
     );
     interval = setInterval(() => closeHandler(web_window), 1000);
@@ -55,7 +55,7 @@ const Welcome = () => {
           </TextStyles>
         </Card>
         <FlexLayout>
-          <FlexChild desktopWidth="50" mobileWidth="20" tabWidth="20">
+          <FlexChild desktopWidth="50" mobileWidth="20" tabWidth="50">
             <Card>
               <FlexLayout direction="vertical" spacing="loose" valign="start">
                 <Card title={"Connect Your amazon account"}>
@@ -133,7 +133,7 @@ const Welcome = () => {
               </FlexLayout>
             </Card>
           </FlexChild>
-          <FlexChild desktopWidth="50" mobileWidth="20" tabWidth="20">
+          <FlexChild desktopWidth="50" mobileWidth="20" tabWidth="50">
             <Card>
                 <Card cardType="Shadowed" media="https://i.imgur.com/1TqLoyq.png">
                 </Card>
