@@ -1,10 +1,24 @@
+import { Card, FlexChild, FlexLayout } from '@cedcommerce/ounce-ui'
 import React from 'react'
-import PieChart from './piechart/PieChart'
+import CalenderGraph from './calendergraph/CalenderGraph'
+import Doughnut from './Doughnut/Doughnut'
+import ProgressGraph from './progressbar/ProgressGraph'
 
 const Graph = () => {
   return (
-   <>
-   <PieChart />
+    <>
+   <FlexLayout>
+    <FlexChild desktopWidth='50' tabWidth='50'>
+   <Doughnut />
+   </FlexChild>
+   <FlexChild desktopWidth='50' tabWidth='50'>
+   <ProgressGraph />
+
+   </FlexChild>
+   </FlexLayout>
+   <Card>
+    <CalenderGraph />
+   </Card>
    </>
   )
 }
