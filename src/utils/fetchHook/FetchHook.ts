@@ -1,11 +1,11 @@
 export const useFetch = (url:any) => {
-    const _get = async (endpoint:any={},str=[], allParams:any) => {
+    const _get = async (endpoint:any={}, allParams:any) => {
         let url1 = url
-        if(str.length){
-          for(let i=0;i<str.length;i++){
-            url1 += `/${str[i]}` 
-          }
-        }
+        // if(str.length){
+        //   for(let i=0;i<str.length;i++){
+        //     url1 += `/${str[i]}` 
+        //   }
+        // }
         let requestUrl = new URL(url1);
         for (let i in endpoint) {
           requestUrl.searchParams.append(i, endpoint[i]);
@@ -22,7 +22,7 @@ export const useFetch = (url:any) => {
           Accept: "application/json",
           "Content-Type": "application/json",
           appTag: "twitter_ads",
-          Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjM2MzcyZDgxODZlNjUzOWVkMDU5NmMyIiwicm9sZSI6ImN1c3RvbWVyIiwiZXhwIjoxNjcxNjI5MTU5LCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYzYTJkMTI3OWFlZGNmN2UxNTdhODZhNiJ9.NCksH0DVDn2m1j5FypLiOqmUyWMPPVK4vFsjivg6LPYqQ5clC2Yjm6U7HYhO4mOKjstA-HmdEeNpGTGAmnFjXEOFYWztKtQ0L2_Iu0xwYeSvzRu0uLM3n006olovo-k4K4qs1l-gAIF6d0_VNlRS5DgyLoVbaj859mpZcVlXA-X8b248t6t1s09p55govCgBsCPAj6sWepybUjky2Ucugn_n2GAgtg-W3yK7hXrSoL4HtA3ob45PKoKEzrDx3QCRgz8dB-gNvdTEEeMTdXDqxz_hCkT6JpakGTQ5aOJt0AHHULRcDOth0-7qYOPKl7OiCCEoQM225z31xwgYiDZUow`,
+          Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjM2MzcyZDgxODZlNjUzOWVkMDU5NmMyIiwicm9sZSI6ImN1c3RvbWVyIiwiZXhwIjoxNjcyMDQxNDg0LCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYzYTkxYmNjMzIxMzE3NTIxYTU4YzgwMiJ9.T_kndGEEentY5MLfpJsL4l29UF_EK4e9p_oWUcg4Dt2w7dTSHs72w3CVqsKD4bNQYenaOGDuS7LeMiosZiL2vfjoUT8VorenbzTTqLh9GTG55SUnDCRG41QaUCwoJwGAChSObDqyFRK51Y-UASyMjKu4hk2hRKzJe54Wx3c3QigmD_lUd9rwxJs0ma7LrHj3ARCDaUwIagsOXoBZqC4jn3L3WQMaSDh9w6x9Ka9R1X-3zrvyjt36931qWzCkTfgGBTz0N0ZQZULsJDA-X8R0ixH4iVEqkYuylKjqJWq_KXNN6paewDZFvkRW-WzRmHCQWzqY3PmlQMgAKAJVQR-pdw`,
           "Ced-Source-Id": "889",
           "Ced-Source-Name": "shopify",
           "Ced-Target-Id": "890",

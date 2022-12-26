@@ -5,15 +5,17 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "@cedcommerce/ounce-ui/dist/index.css";
 import { BrowserRouter } from 'react-router-dom';
+import { Provider } from 'react-redux'
+import { store } from './store/Store';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
   <BrowserRouter>
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>
+  </Provider>
   </BrowserRouter>
 );
 

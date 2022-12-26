@@ -13,6 +13,9 @@ const Welcome = () => {
         <TextStyles>
           <Link to={"/graphs"}>Doughnut</Link>
         </TextStyles>
+        <TextStyles>
+          <Link to={"/listing"}>Listing</Link>
+        </TextStyles>
       </List>
     </Card>
   );

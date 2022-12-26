@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Connect from '../connect/Connect';
 import Graph from '../Graphs';
+import Listing from '../listing';
 import Login from '../Login';
 import Register from '../Register';
 import Welcome from '../welcome/Welcome';
@@ -14,6 +15,7 @@ const SignIn:FC = () => {
       <Route path='/welcome' element={<Welcome />}/>
       <Route path='/connect' element={<Connect />}/>
       <Route path='/graphs' element={<Graph />}/>
+      <Route path='/listing' element={<Listing />}/>
     </Routes>
   )
 }
