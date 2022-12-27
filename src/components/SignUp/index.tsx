@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import Connect from '../connect/Connect';
+import Faqs from '../faqs/Faqs';
 import Graph from '../Graphs';
 import Listing from '../listing';
 import Login from '../Login';
@@ -16,6 +17,7 @@ const SignIn:FC = () => {
       <Route path='/connect' element={<Connect />}/>
       <Route path='/graphs' element={<Graph />}/>
       <Route path='/listing' element={<Listing />}/>
+      <Route path='/faqs' element={<Faqs />}/>
     </Routes>
   )
 }
