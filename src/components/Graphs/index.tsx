@@ -9,15 +9,20 @@ const Graph = () => {
     <>
    <FlexLayout>
     <FlexChild desktopWidth='50' tabWidth='50'>
+      <FlexLayout halign='center' valign='center'>
    <Doughnut />
+   </FlexLayout>
    </FlexChild>
    <FlexChild desktopWidth='50' tabWidth='50'>
    <ProgressGraph />
-
    </FlexChild>
    </FlexLayout>
    <Card>
+   <FlexLayout halign='center'>
+    <FlexChild desktopWidth='66' tabWidth='66'>
     <CalenderGraph />
+    </FlexChild>
+   </FlexLayout>
    </Card>
    </>
   )

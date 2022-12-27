@@ -53,7 +53,6 @@ const CalenderGraph = () => {
     <Card>
       <FlexLayout halign="end">
         <FlexChild>
-
           <Card>
             <ActionList
               open={open}

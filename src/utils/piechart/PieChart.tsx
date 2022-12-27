@@ -7,7 +7,6 @@ interface IProps{
 const PieChart:FC<IProps> = ({apiData}) => {
   return (
     <div>
-    <Card>
     <DoughnutCharts
       data={{
         datasets: [
@@ -35,7 +34,6 @@ const PieChart:FC<IProps> = ({apiData}) => {
         labels: apiData.map((item)=>item._id)
       }}
      />
-  </Card>
   </div>
   )
 }
