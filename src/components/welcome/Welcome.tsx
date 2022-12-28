@@ -19,6 +19,9 @@ const Welcome = () => {
         <TextStyles>
           <Link to={"/faqs"}>FAQs</Link>
         </TextStyles>
+        <TextStyles>
+          <Link to={"/mapping"}>Attributes Mapping</Link>
+        </TextStyles>
       </List>
     </Card>
   );

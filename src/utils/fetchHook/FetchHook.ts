@@ -22,7 +22,7 @@ export const useFetch = (url:any) => {
           Accept: "application/json",
           "Content-Type": "application/json",
           appTag: "twitter_ads",
-          Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjM2MzcyZDgxODZlNjUzOWVkMDU5NmMyIiwicm9sZSI6ImN1c3RvbWVyIiwiZXhwIjoxNjcyMDQxNDg0LCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYzYTkxYmNjMzIxMzE3NTIxYTU4YzgwMiJ9.T_kndGEEentY5MLfpJsL4l29UF_EK4e9p_oWUcg4Dt2w7dTSHs72w3CVqsKD4bNQYenaOGDuS7LeMiosZiL2vfjoUT8VorenbzTTqLh9GTG55SUnDCRG41QaUCwoJwGAChSObDqyFRK51Y-UASyMjKu4hk2hRKzJe54Wx3c3QigmD_lUd9rwxJs0ma7LrHj3ARCDaUwIagsOXoBZqC4jn3L3WQMaSDh9w6x9Ka9R1X-3zrvyjt36931qWzCkTfgGBTz0N0ZQZULsJDA-X8R0ixH4iVEqkYuylKjqJWq_KXNN6paewDZFvkRW-WzRmHCQWzqY3PmlQMgAKAJVQR-pdw`,
+          Authorization: `Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VyX2lkIjoiNjM2MzcyZDgxODZlNjUzOWVkMDU5NmMyIiwicm9sZSI6ImN1c3RvbWVyIiwiZXhwIjoxNjcyMjE3NzM1LCJpc3MiOiJodHRwczpcL1wvYXBwcy5jZWRjb21tZXJjZS5jb20iLCJ0b2tlbl9pZCI6IjYzYWJjYzQ3Mjk0MTA1NTk0ZDU4N2U3ZCJ9.lAZpat7XqVL-IfZr3DfVigmoxhyNFiJMTunv_1jZVjf9Uqwa_Y4F7bWOa8B5-VDnSIPjJH1d1ksgsX01BytX8oCIYyeDi0ww-hPqq3uQTtWnDS0kUf1CzTVNfDX6gv23wkYzJvRj_DLEzVONYH4wXof8QtebAk6WbqcDqQy6wnT81Z41mnoEw1-_tJ_IKNsHDnFVFtkYTrGacZUDiox0zK8pnfjRcwSwYPJzVZOs4qLQaETKey6PyP2oOjLkG7KPjkk4oTORTHUS2Jt6uWAFGO7d0R6dWvYNLSZixLOajnB4saARiXvi45QJ8EnLgyVYXSCsEcg96nOxqbRU0oDc9g`,
           "Ced-Source-Id": "889",
           "Ced-Source-Name": "shopify",
           "Ced-Target-Id": "890",

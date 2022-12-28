@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import AttrMapping from '../atrrMapping';
 import Connect from '../connect/Connect';
 import Faqs from '../faqs/Faqs';
 import Graph from '../Graphs';
@@ -18,6 +19,7 @@ const SignIn:FC = () => {
       <Route path='/graphs' element={<Graph />}/>
       <Route path='/listing' element={<Listing />}/>
       <Route path='/faqs' element={<Faqs />}/>
+      <Route path='/mapping' element={<AttrMapping />}/>
     </Routes>
   )
 }

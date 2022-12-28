@@ -108,6 +108,7 @@ const Faqs = () => {
       setApiData({ ...data });
     };
     callData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   const accordianClickHandler = (val: string, group: string) => {
     let temp = { ...apiData };
