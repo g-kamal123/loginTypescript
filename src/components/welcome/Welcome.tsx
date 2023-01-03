@@ -22,6 +22,9 @@ const Welcome = () => {
         <TextStyles>
           <Link to={"/mapping"}>Attributes Mapping</Link>
         </TextStyles>
+        <TextStyles>
+          <Link to={"/multi"}>Multi-Level Select</Link>
+        </TextStyles>
       </List>
     </Card>
   );

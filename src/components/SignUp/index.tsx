@@ -6,6 +6,7 @@ import Faqs from '../faqs/Faqs';
 import Graph from '../Graphs';
 import Listing from '../listing';
 import Login from '../Login';
+import MultiLevelSelection from '../multiLevelSelection';
 import Register from '../Register';
 import Welcome from '../welcome/Welcome';
 
@@ -20,6 +21,7 @@ const SignIn:FC = () => {
       <Route path='/listing' element={<Listing />}/>
       <Route path='/faqs' element={<Faqs />}/>
       <Route path='/mapping' element={<AttrMapping />}/>
+      <Route path='/multi' element={<MultiLevelSelection />}/>
     </Routes>
   )
 }
