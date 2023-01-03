@@ -3,6 +3,7 @@ export const getProductHeader = {
     headers: {
         appTag: "twitter_ads",
         Authorization: token,
+        "Ced-Source-Id": "889",
         "Ced-Source-Name": "shopify",
         "Ced-Target-Id": "890",
         "Ced-Target-Name": "twitter",

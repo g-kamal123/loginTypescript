@@ -7,6 +7,7 @@ import Graph from '../Graphs';
 import Listing from '../listing';
 import Login from '../Login';
 import MultiLevelSelection from '../multiLevelSelection';
+import QueryBuilder from '../queryBulider';
 import Register from '../Register';
 import Welcome from '../welcome/Welcome';
 
@@ -22,6 +23,7 @@ const SignIn:FC = () => {
       <Route path='/faqs' element={<Faqs />}/>
       <Route path='/mapping' element={<AttrMapping />}/>
       <Route path='/multi' element={<MultiLevelSelection />}/>
+      <Route path='/queryBuilder' element={<QueryBuilder />}/>
     </Routes>
   )
 }

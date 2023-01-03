@@ -25,6 +25,9 @@ const Welcome = () => {
         <TextStyles>
           <Link to={"/multi"}>Multi-Level Select</Link>
         </TextStyles>
+        <TextStyles>
+          <Link to={"/queryBuilder"}>Query Builder</Link>
+        </TextStyles>
       </List>
     </Card>
   );
