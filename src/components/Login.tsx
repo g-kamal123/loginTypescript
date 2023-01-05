@@ -5,7 +5,7 @@ import {
   FormElement,
   TextField,
 } from "@cedcommerce/ounce-ui";
-import React, { FC, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login: FC = () => {
@@ -13,6 +13,10 @@ const Login: FC = () => {
   const [username, setUsername] = useState<string>("");
   const [password, setpassword] = useState<string>("");
   const [flag, setFlag] = useState<boolean>(false);
+  useEffect(()=>{
+    nav('/queryBuilder')
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
   const usernameHandler = (e: string) => {
     setFlag(false);
     setUsername(e);
@@ -61,7 +65,7 @@ const Login: FC = () => {
           </Alert>
         )}
         <span>
-          New User? <a onClick={() => nav("/register")}>Register Here</a>
+          New User? <a href="#a" onClick={() => nav("/register")}>Register Here</a>
         </span>
       </FormElement>
     </Card>

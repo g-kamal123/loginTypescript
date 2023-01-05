@@ -14,7 +14,7 @@ import Welcome from '../welcome/Welcome';
 const SignIn:FC = () => {
   return (
     <Routes>
-      <Route path='/' element={<Login />}/>
+      <Route path='/' element={<Login />} />
       <Route path='/register' element={<Register />}/>
       <Route path='/welcome' element={<Welcome />}/>
       <Route path='/connect' element={<Connect />}/>
