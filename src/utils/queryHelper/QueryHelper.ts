@@ -1,8 +1,9 @@
-import { store } from "../../store/Store"
+import { rowTypes } from "../../store/slices/QuerySlice"
+// import { store } from "../../store/Store"
 
-export const queryHelper = ()=>{
-    const data = store.getState()
-    let dt = data.query.dataStructure
+export const queryHelper = (data:Record<string, rowTypes[]>)=>{
+    // const data = store.getState()
+    let dt = data
     let query = ""
     Object.keys(dt).map((item,key)=>{
         let temp = query

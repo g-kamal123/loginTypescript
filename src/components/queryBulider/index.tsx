@@ -1,12 +1,13 @@
-import { Alert, Button, Card, FlexLayout } from "@cedcommerce/ounce-ui";
+import { Alert, Badge, Button, Card, FlexLayout, TextStyles } from "@cedcommerce/ounce-ui";
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAlert, setGroupNum, setRows } from "../../store/slices/QuerySlice";
+import { setAlert, setGroupNum, setModal, setRows } from "../../store/slices/QuerySlice";
 import { RootState } from "../../store/Store";
 import { useFetch } from "../../utils/fetchHook/FetchHook";
 import { queryHelper } from "../../utils/queryHelper/QueryHelper";
 import FilterGroup from "./filterGroup/FilterGroup";
 import {v4 as uuid} from 'uuid';
+import ListModal from "./listModal/ListModal";
 
 const QueryBuilder: FC = () => {
   const store = useSelector((state: RootState) => state.query);
@@ -67,7 +68,7 @@ const QueryBuilder: FC = () => {
     });
     dispatch(setRows({ row: [...dt] }));
 
-    console.log(dt);
+    // console.log(dt);
   };
   useEffect(() => {
     getData();
@@ -82,7 +83,7 @@ const QueryBuilder: FC = () => {
     );
   };
   const queryMaker = async () => {
-    let query = queryHelper();
+    let query = queryHelper(store.dataStructure);
     let payload = {
       target_marketplace: "eyJtYXJrZXRwbGFjZSI6ImFsbCIsInNob3BfaWQiOm51bGx9",
       source: {
@@ -97,7 +98,7 @@ const QueryBuilder: FC = () => {
       overWriteExistingProducts: false,
       useRefinProduct: true,
     };
-    console.log(query);
+    // console.log(query);
     if (!query) return;
     const ftch = await queryCall._post({ ...payload });
     const data = ftch.data.count;
@@ -109,8 +110,16 @@ const QueryBuilder: FC = () => {
     if (data) setProductCount(data);
     else setProductCount(0);
   };
+  const openMoadal =()=>{
+    dispatch(setModal())
+  }
   return (
     <Card>
+      {store.queryBadge && 
+       <Badge type="Neutral-400">
+       {store.queryBadge}
+     </Badge>
+      }
       {store.rows.length > 0 &&
         Object.keys(store.dataStructure).map((item, key) => (
           <FilterGroup key={key} allrows={store.dataStructure[item]} />
@@ -125,9 +134,15 @@ const QueryBuilder: FC = () => {
           destroy={false}
           type={productCount > 0 ? "success" : "danger"}
           children={""}
-          desciption={<>{productCount} products found</>}
+          desciption={<>
+          <TextStyles>
+          {productCount} products found {" "}
+          {productCount>0 && <a href="#list" onClick={openMoadal}>View Sample Product(s)</a>}
+          </TextStyles>
+          </>}
         />
       )}
+      <ListModal />
     </Card>
   );
 };

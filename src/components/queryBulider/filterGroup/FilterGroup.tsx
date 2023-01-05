@@ -11,7 +11,7 @@ type FProps ={
 }
 const FilterGroup: FC<FProps> = (props) => {
   const store = useSelector((state: RootState) => state.query);
-  console.log(store)
+  // console.log(store)
   const [rowCount,setRowCount] = useState<string[]>(["first"])
   const dispatch = useDispatch();
   const btnHandler = () => {
@@ -37,7 +37,7 @@ const FilterGroup: FC<FProps> = (props) => {
       }
         <TextStyles>Filter Group</TextStyles>
         </FlexLayout>
-        <Button type="Plain" content="Add Row" icon={<Plus size={18} onClick={btnHandler} />} />
+        <Button type="Plain" onClick={btnHandler} icon={<Plus size={18} />} >Add Row</Button>
       </FlexLayout>
       <FlexLayout direction="vertical" spacing="loose">
       {props.allrows
