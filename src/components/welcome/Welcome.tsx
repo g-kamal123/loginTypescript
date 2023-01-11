@@ -28,6 +28,9 @@ const Welcome = () => {
         <TextStyles>
           <Link to={"/queryBuilder"}>Query Builder</Link>
         </TextStyles>
+        <TextStyles>
+          <Link to={"/adminPanel"}>Admin Panel</Link>
+        </TextStyles>
       </List>
     </Card>
   );

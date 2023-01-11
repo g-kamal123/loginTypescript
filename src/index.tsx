@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "@cedcommerce/ounce-ui/dist/index.css";
+import '@shopify/polaris/build/esm/styles.css';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux'
 import { store } from './store/Store';

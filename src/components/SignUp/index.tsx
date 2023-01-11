@@ -1,5 +1,7 @@
+import { AppProvider } from '@shopify/polaris';
 import React, { FC } from 'react';
 import { Route, Routes } from 'react-router-dom';
+import AdminPanel from '../adminPanel';
 import AttrMapping from '../atrrMapping';
 import Connect from '../connect/Connect';
 import Faqs from '../faqs/Faqs';
@@ -10,6 +12,7 @@ import MultiLevelSelection from '../multiLevelSelection';
 import QueryBuilder from '../queryBulider';
 import Register from '../Register';
 import Welcome from '../welcome/Welcome';
+import enTranslations from '@shopify/polaris/locales/en.json';
 
 const SignIn:FC = () => {
   return (
@@ -24,6 +27,10 @@ const SignIn:FC = () => {
       <Route path='/mapping' element={<AttrMapping />}/>
       <Route path='/multi' element={<MultiLevelSelection />}/>
       <Route path='/queryBuilder' element={<QueryBuilder />}/>
+      <Route path='adminPanel' element={
+      <AppProvider i18n={enTranslations}>
+      <AdminPanel />
+      </AppProvider>}/>
     </Routes>
   )
 }

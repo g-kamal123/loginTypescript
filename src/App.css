@@ -7,3 +7,86 @@
   height: 20rem;
   width: 50%;
 }
+.btnBlue button{
+  background-color: #6C4EC8;
+  color: whitesmoke;
+  font-size: 16px;
+  border-radius: 4px;
+}
+.btnBlue button:hover{
+  background-color: #6C4EC8;
+}
+.tabelDataWidth p{
+  max-width: 15rem;
+  width: min-content;
+  /* background-color: red; */
+  overflow-wrap: break-word !important;
+  word-wrap: break-word !important;
+  word-break: break-all !important;
+}
+.dateContainer{
+  position: relative;
+}
+.paginationAdmin{
+  max-width: 70%;
+}
+.animation button{
+  height: 5rem;
+  width: 8rem;
+}
+.paginationAdmin .Polaris-Select__SelectedOption{
+  min-width: 5rem !important;
+}
+.dateInput{
+  max-width: 2rem !important;
+  overflow-x: auto;
+}
+.navBar{
+  background-color: #485A96;
+  padding: 1rem 0.7rem;
+  position: sticky;
+  top: 0rem;
+  z-index: 99;
+}
+.navBar h2{
+  color: whitesmoke;
+}
+.asideBar{
+  background-color: #485A96;
+  height: calc(100vh - 5rem);
+  padding: 0rem 0;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  position: sticky;
+  top: 5rem;
+  border-top: 1px solid whitesmoke;
+}
+.integration{
+  padding: 0.5rem;
+  font-size: 18px;
+  background-color: #F5F5F5;
+}
+.btnIcon button{
+  background-color: #485A96;
+  border: none;
+}
+.btnIcon button:hover{
+  background-color: #485A96;
+}
+.btnChevron{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3A4878;
+  padding: 2rem 0;
+}
+.btnChevron button{
+  background-color: #3A4878;
+  border: none;
+}
+.btnChevron button:hover{
+  background-color: #3A4878;
+}

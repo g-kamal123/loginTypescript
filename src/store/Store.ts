@@ -1,10 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit'
+import adminPanelSlice from './slices/AdminPanelSlice'
 import gridSlice  from './slices/GridSlice'
 import querySlice from './slices/QuerySlice'
 export const store = configureStore({
     reducer:{
         grid:gridSlice,
-        query:querySlice
+        query:querySlice,
+        adminPanel:adminPanelSlice
     }
 })
 
