@@ -1,17 +1,30 @@
-import { Alert, Badge, Button, Card, FlexLayout, TextStyles } from "@cedcommerce/ounce-ui";
+import {
+  Alert,
+  Badge,
+  Button,
+  Card,
+  FlexLayout,
+  TextStyles,
+} from "@cedcommerce/ounce-ui";
 import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setAlert, setGroupNum, setModal, setRows } from "../../store/slices/QuerySlice";
+import {
+  setAlert,
+  setGroupNum,
+  setModal,
+  setRows,
+} from "../../store/slices/QuerySlice";
 import { RootState } from "../../store/Store";
 import { useFetch } from "../../utils/fetchHook/FetchHook";
 import { queryHelper } from "../../utils/queryHelper/QueryHelper";
 import FilterGroup from "./filterGroup/FilterGroup";
-import {v4 as uuid} from 'uuid';
+import { v4 as uuid } from "uuid";
 import ListModal from "./listModal/ListModal";
 
 const QueryBuilder: FC = () => {
   const store = useSelector((state: RootState) => state.query);
   const dispatch = useDispatch();
+  const [loading,setLoading] = useState<boolean>(false)
   const [apiCall] = useFetch(
     "https://multi-account.sellernext.com/home/public/connector/source/getFilterAttributes"
   );
@@ -29,7 +42,7 @@ const QueryBuilder: FC = () => {
     let dt = ftch.data;
     dt = dt.filter(
       (item: any) =>
-        item.title !== "Variant attributes" && item.title !== "Collections"
+        item.title !== "Variant attributes" && item.title !== "Collections" && item.title !== "Type"
     );
     let stringConstraint = [
       { label: "Contains", value: "%LIKE%" },
@@ -54,8 +67,12 @@ const QueryBuilder: FC = () => {
         dt[i].constraint = numberConstraint;
       if (dt[i].title === "Product status" || dt[i].title === "Product Type")
         dt[i].constraint = binaryConstraint;
-      if (dt[i].title === "Vendor") dt[i].title = "Brand";
+      if (dt[i].title === "Vendor") {
+        dt[i].title = "Brand";
+        dt[i].constraint = binaryConstraint;
+      }
     }
+    console.log(dt)
     dt = dt.map((item: any) => {
       return {
         label: item.title,
@@ -100,6 +117,7 @@ const QueryBuilder: FC = () => {
     };
     // console.log(query);
     if (!query) return;
+    setLoading(true)
     const ftch = await queryCall._post({ ...payload });
     const data = ftch.data.count;
     dispatch(
@@ -109,24 +127,21 @@ const QueryBuilder: FC = () => {
     );
     if (data) setProductCount(data);
     else setProductCount(0);
+    setLoading(false)
   };
-  const openMoadal =()=>{
-    dispatch(setModal())
-  }
+  const openMoadal = () => {
+    dispatch(setModal());
+  };
   return (
     <Card>
-      {store.queryBadge && 
-       <Badge type="Neutral-400">
-       {store.queryBadge}
-     </Badge>
-      }
+      {store.queryBadge && <Badge type="Neutral-400">{store.queryBadge}</Badge>}
       {store.rows.length > 0 &&
         Object.keys(store.dataStructure).map((item, key) => (
           <FilterGroup key={key} allrows={store.dataStructure[item]} />
         ))}
       <FlexLayout spacing="loose">
         <Button content="Add Group" type="Shadowed" onClick={addGroupHandler} />
-        <Button content="Run Query" type="Shadowed" onClick={queryMaker} />
+        <Button content="Run Query" type="Shadowed" onClick={queryMaker} loading={loading}/>
       </FlexLayout>
       <br />
       {store.alert && (
@@ -134,12 +149,18 @@ const QueryBuilder: FC = () => {
           destroy={false}
           type={productCount > 0 ? "success" : "danger"}
           children={""}
-          desciption={<>
-          <TextStyles>
-          {productCount} products found {" "}
-          {productCount>0 && <a href="#list" onClick={openMoadal}>View Sample Product(s)</a>}
-          </TextStyles>
-          </>}
+          desciption={
+            <>
+              <TextStyles>
+                {productCount} products found{" "}
+                {productCount > 0 && (
+                  <a href="#list" onClick={openMoadal}>
+                    View Sample Product(s)
+                  </a>
+                )}
+              </TextStyles>
+            </>
+          }
         />
       )}
       <ListModal />

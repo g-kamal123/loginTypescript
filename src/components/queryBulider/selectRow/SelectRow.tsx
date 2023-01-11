@@ -5,7 +5,7 @@ import {
   Select,
   TextField,
 } from "@cedcommerce/ounce-ui";
-import React, { FC } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   deleteRow,
@@ -20,12 +20,30 @@ type IProps = {
 };
 const SelectRow: FC<IProps> = (props) => {
   const store = useSelector((state: RootState) => state.query);
+  const [filterChoice,setFilterChoice] = useState<any>([])
   const dispatch = useDispatch();
 
+  useEffect(()=>{
+    let toFilter:any = []
+    if(store.dataStructure){
+    Object.keys(store.dataStructure).map((item)=>{
+      store.dataStructure[item].map((it)=>{
+        if(it.inputType==="choiceList"){
+          toFilter = [...toFilter,...it.input]
+          toFilter = [...new Set(toFilter)]
+        }
+        return 0
+      })
+      return 0
+    })}
+    setFilterChoice([...toFilter])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[store.dataStructure])
   const categorySelectChangeHandler = (e: string) => {
     let data: any = JSON.parse(e);
     // setConstraintSelect([...data.constraint]);
     let rowData = { ...props.rowValue };
+    rowData.inputType = "TextField";
     if (data.title === "Brand" || data.title === "Product Type")
       rowData.inputType = "choiceList";
     if (data.title === "Product status") rowData.inputType = "select";
@@ -111,6 +129,7 @@ const SelectRow: FC<IProps> = (props) => {
         {props.rowValue.inputType === "TextField" && (
           <FlexChild desktopWidth="33" tabWidth="33">
           <TextField
+          type={(JSON.parse(props.rowValue.category).title==="Price"||JSON.parse(props.rowValue.category).title==="Quantity")?"number":"text"}
             onChange={inputSelectChangeHandler}
             value={
               Array.isArray(props.rowValue.input) ? "" : props.rowValue.input
@@ -133,13 +152,16 @@ const SelectRow: FC<IProps> = (props) => {
           <FlexChild desktopWidth="33" tabWidth="33">
           <ChoiceList
           showBadges={true}
-            options={props.rowValue.options}
+            options={props.rowValue.options.filter((item:any)=>!filterChoice.includes(item.value))}
             value={
               Array.isArray(props.rowValue.input)
                 ? [...props.rowValue.input]
                 : []
             }
             onChange={choiceListHandler}
+            placeholder={props.rowValue.input.length>0
+              ? ""
+              : "Select"}
           />
           </FlexChild>
         )}

@@ -23,6 +23,7 @@ type queryInitial = {
   alert: boolean;
   queryBadge: string;
   modal: boolean;
+  // choiceListselected:[]
 };
 let initialState: queryInitial = {
   rows: [],
@@ -70,6 +71,9 @@ export const querySlice = createSlice({
       let data: rowTypes[] = [...state.dataStructure[action.payload.group]];
       data.map((item: any) => {
         if (item.id === action.payload.id) {
+          if(action.payload?.inputType==="choiceList"){
+
+          }
           if (action.payload.key === "category") {
             item["input"] = "";
             item.options = action.payload.options || [];
@@ -132,7 +136,7 @@ const badgeHelper = (data: Record<string, rowTypes[]>) => {
     .replaceAll("!%LIKE%", "does not contain")
     .replaceAll("%LIKE%", "contains")
     .replaceAll(" ( ", "(")
-    .replaceAll(" ) ", ")");
+    .replaceAll(" ) ", ")").replaceAll("multiselect_brand","Brand").replaceAll("product_type","Product Type");
   return q;
 };
 

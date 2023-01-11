@@ -9,7 +9,7 @@ export const queryHelper = (data:Record<string, rowTypes[]>)=>{
         let temp = query
         if(key&&query) query += " || " ;
         query += " ( ";
-        let tempData = dt[item].filter((it)=>it.input)
+        let tempData = dt[item].filter((it)=>it.input.length>0)
         tempData.map((it,k)=>{
             if(k) query += " && ";
             let temp = JSON.parse(it.category)
