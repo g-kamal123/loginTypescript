@@ -31,6 +31,9 @@ const Welcome = () => {
         <TextStyles>
           <Link to={"/adminPanel"}>Admin Panel</Link>
         </TextStyles>
+        <TextStyles>
+          <Link to={"/comments"}>Social Media Comment</Link>
+        </TextStyles>
       </List>
     </Card>
   );

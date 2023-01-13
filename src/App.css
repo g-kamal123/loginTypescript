@@ -90,3 +90,17 @@
 .btnChevron button:hover{
   background-color: #3A4878;
 }
+
+/*--comments css--*/
+.inputText .Polaris-TextField__Input{
+  font-size: 1.5rem !important;
+  padding: 0.5rem;
+}
+
+.inputBtnSend button{
+  background-color: #622EB6;
+}
+
+.inputBtnSend button:hover{
+  background-color: #622EB6;
+}

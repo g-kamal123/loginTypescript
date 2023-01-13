@@ -14,7 +14,7 @@ const Login: FC = () => {
   const [password, setpassword] = useState<string>("");
   const [flag, setFlag] = useState<boolean>(false);
   useEffect(()=>{
-    nav('/adminPanel')
+    nav('/comments')
   // eslint-disable-next-line react-hooks/exhaustive-deps
   },[])
   const usernameHandler = (e: string) => {
