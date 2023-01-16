@@ -1,8 +1,9 @@
 import { Card, List, TextStyles } from "@cedcommerce/ounce-ui";
 import React from "react";
 import { Link } from "react-router-dom";
+import StringHoc, { hcProps } from "../hoc/stringHoc/StringHoc";
 
-const Welcome = () => {
+const Welcome = (props:hcProps) => {
   return (
     <Card>
       <h1>All Tasks</h1>
@@ -34,9 +35,13 @@ const Welcome = () => {
         <TextStyles>
           <Link to={"/comments"}>Social Media Comment</Link>
         </TextStyles>
+        <TextStyles>
+          <Link to={"/hoc"}>Hoc Component</Link>
+        </TextStyles>
       </List>
+      <h2>{props.name}</h2>
     </Card>
   );
 };
 
-export default Welcome;
+export default StringHoc(Welcome);

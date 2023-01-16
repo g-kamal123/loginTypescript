@@ -14,6 +14,7 @@ import Register from "../Register";
 import Welcome from "../welcome/Welcome";
 import enTranslations from "@shopify/polaris/locales/en.json";
 import Comments from "../comments";
+import Wrapped from "../wrapped/Wrapped";
 
 const SignIn: FC = () => {
   return (
@@ -44,6 +45,7 @@ const SignIn: FC = () => {
           </AppProvider>
         }
       />
+      <Route path="/hoc" element={<Wrapped />}/>
     </Routes>
   );
 };

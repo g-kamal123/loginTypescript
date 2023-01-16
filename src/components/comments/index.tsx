@@ -4,6 +4,7 @@ import {
   Collapsible,
   Page,
   Stack,
+  Text,
   TextField,
 } from "@shopify/polaris";
 import React, { FC } from "react";
@@ -11,15 +12,16 @@ import { UserPlus } from "react-feather";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserName } from "../../store/slices/Comments";
 import { RootState } from "../../store/Store";
+import StringHoc, { hcProps } from "../hoc/stringHoc/StringHoc";
 import EditCommentModal from "./editCommentModal/EditCommentModal";
 import InputField from "./inputField/InputField";
 import SingleComment from "./singleComment/SingleComment";
-const Comments: FC = () => {
+const Comments:FC<hcProps>= (props:hcProps) => {
   const store = useSelector((state: RootState) => state.comments);
   const dispatch = useDispatch()
   console.log(store)
   const print = (key: string) => {
-    return store.allComments[key].map((item: any) => (
+    return store.allComments[key].map((item) => (
       <Box as="div">
           <br />
         <SingleComment commentData={item}/>
@@ -54,6 +56,7 @@ const Comments: FC = () => {
   };
   return (
     <Page> 
+      <Text variant="headingXl" as="h2">{props.name}</Text>
       <Card sectioned>
         <div className="inputText">
           <Stack distribution="leading">
@@ -83,4 +86,4 @@ const Comments: FC = () => {
   );
 };
 
-export default Comments;
+export default StringHoc(Comments);

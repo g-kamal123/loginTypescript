@@ -9,23 +9,23 @@ export type commentData = {
   name: string;
   reply: boolean;
   showReplies: boolean;
-  likes:string[]
+  likes: string[];
 };
 type commentInitial = {
   allComments: Record<string, commentData[]>;
   currHead: string;
   currId: string;
   user: string;
-  modal:boolean;
-  modalData:any
+  modal: boolean;
+  modalData: any;
 };
 let initialState: commentInitial = {
   allComments: { parentComments: [] },
   currHead: "",
   currId: "",
   user: "",
-  modal:false,
-  modalData:{}
+  modal: false,
+  modalData: {},
 };
 export const commentsSlice = createSlice({
   name: "comments",
@@ -47,7 +47,7 @@ export const commentsSlice = createSlice({
           name: state.user,
           reply: false,
           showReplies: false,
-          likes:[]
+          likes: [],
         },
       ];
       state.allComments = temp;
@@ -55,7 +55,7 @@ export const commentsSlice = createSlice({
     setReplyAddress: (state, action) => {
       let temp = { ...state.allComments };
       let tempData = action.payload.commentData;
-      temp[tempData.head].map((item: commentData) => {
+      temp[tempData.head].map((item) => {
         if (item.id === tempData.id) {
           item.reply = true;
         }
@@ -65,11 +65,11 @@ export const commentsSlice = createSlice({
       state.currId = tempData.id;
       state.allComments = temp;
     },
-    cancelComment: (state,action) => {
+    cancelComment: (state, action) => {
       let currHead = action.payload.commentData.head;
       let currId = action.payload.commentData.id;
       let temp = { ...state.allComments };
-      temp[currHead].map((item: commentData) => {
+      temp[currHead].map((item) => {
         if (item.id === currId) {
           item.reply = false;
         }
@@ -105,7 +105,7 @@ export const commentsSlice = createSlice({
           name: state.user,
           reply: false,
           showReplies: false,
-          likes:[]
+          likes: [],
         },
       ];
       state.allComments = temp;
@@ -113,7 +113,7 @@ export const commentsSlice = createSlice({
     setShowReplies: (state, action) => {
       let temp = { ...state.allComments };
       let tempData = action.payload.commentData;
-      temp[tempData.head].map((item: commentData) => {
+      temp[tempData.head].map((item) => {
         if (item.id === tempData.id) {
           item.showReplies = !item.showReplies;
         }
@@ -122,55 +122,57 @@ export const commentsSlice = createSlice({
     },
     deleteComment: (state, action) => {
       let temp = { ...state.allComments };
-      let tempData:commentData = action.payload.commentData;
-      let allNextPointers =deleteHelper(temp, tempData);
-      allNextPointers = allNextPointers.filter((item)=>item!=="")
-      temp[tempData.head] = temp[tempData.head].filter((item:commentData)=>item.id!==tempData.id)
-      for(let i=0;i<allNextPointers.length;i++){
-        delete temp[allNextPointers[i]]
+      let tempData: commentData = action.payload.commentData;
+      let allNextPointers = deleteHelper(temp, tempData);
+      allNextPointers = allNextPointers.filter((item) => item !== "");
+      temp[tempData.head] = temp[tempData.head].filter(
+        (item) => item.id !== tempData.id
+      );
+      for (let i = 0; i < allNextPointers.length; i++) {
+        delete temp[allNextPointers[i]];
       }
-      state.allComments = temp
+      state.allComments = temp;
     },
-    editComment:(state,action)=>{
-        state.modal = true
-        state.modalData = action.payload.commentData
+    editComment: (state, action) => {
+      state.modal = true;
+      state.modalData = action.payload.commentData;
     },
-    closeModal:(state)=>{
-        state.modal = false
+    closeModal: (state) => {
+      state.modal = false;
     },
-    updateComment:(state,action)=>{
-        let temp = {...state.allComments}
-        let commentData:commentData = {...state.modalData}
-        let head = commentData.head
-        let id = commentData.id
-        temp[head].map((item:commentData)=>{
-            if(item.id===id){
-                item.value = action.payload.value
-            }
-            return 0
-        })
-        state.allComments = temp
-        state.modal = false
+    updateComment: (state, action) => {
+      let temp = { ...state.allComments };
+      let commentData: commentData = { ...state.modalData };
+      let head = commentData.head;
+      let id = commentData.id;
+      temp[head].map((item) => {
+        if (item.id === id) {
+          item.value = action.payload.value;
+        }
+        return 0;
+      });
+      state.allComments = temp;
+      state.modal = false;
     },
-    setLikes:(state,action)=>{
-        let temp = {...state.allComments}
-        let head = action.payload.commentData.head
-        let id = action.payload.commentData.id
-        let type = action.payload.type
-        temp[head].map((item)=>{
-            if(item.id===id){
-                if(type==="increase"){
-                    item.likes = [...item.likes,state.user]
-                    item.likes = [...new Set(item.likes)]
-                }
-                if(type==="decrease"){
-                    item.likes = item.likes.filter((it)=>it!==state.user)
-                }
-            }
-            return 0
-        })
-        state.allComments = temp
-    }
+    setLikes: (state, action) => {
+      let temp = { ...state.allComments };
+      let head = action.payload.commentData.head;
+      let id = action.payload.commentData.id;
+      let type = action.payload.type;
+      temp[head].map((item) => {
+        if (item.id === id) {
+          if (type === "increase") {
+            item.likes = [...item.likes, state.user];
+            item.likes = [...new Set(item.likes)];
+          }
+          if (type === "decrease") {
+            item.likes = item.likes.filter((it) => it !== state.user);
+          }
+        }
+        return 0;
+      });
+      state.allComments = temp;
+    },
   },
 });
 
@@ -178,15 +180,14 @@ const deleteHelper = (
   data: Record<string, commentData[]>,
   comment: commentData
 ) => {
-    let next = comment.next
-    if(next){
-    let delArr = data[next].map((item)=>{
-        if(item.next)
-        deleteHelper(data,item)
-        return next
-    })
-    return delArr
-} else return [""]
+  let next = comment.next;
+  if (next) {
+    let delArr = data[next].map((item) => {
+      if (item.next) deleteHelper(data, item);
+      return next;
+    });
+    return delArr;
+  } else return [""];
 };
 
 export const {
@@ -200,7 +201,7 @@ export const {
   editComment,
   closeModal,
   updateComment,
-  setLikes
+  setLikes,
 } = commentsSlice.actions;
 
 export default commentsSlice.reducer;

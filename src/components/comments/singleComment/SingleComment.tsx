@@ -73,11 +73,13 @@ const SingleComment: FC<scProps> = (props) => {
       })
     );
   };
-  const editCommentHandler =()=>{
-    dispatch(editComment({
-      commentData:props.commentData
-    }))
-  }
+  const editCommentHandler = () => {
+    dispatch(
+      editComment({
+        commentData: props.commentData,
+      })
+    );
+  };
   return (
     <Card sectioned>
       <div style={{ display: "flex", gap: "1rem", width: "100%" }}>
@@ -125,7 +127,11 @@ const SingleComment: FC<scProps> = (props) => {
             </Inline>
             {store.user === props.commentData.name && (
               <Inline align="space-between">
-                <Button icon={<Edit size={18} color="blue" />} plain onClick={editCommentHandler}></Button>
+                <Button
+                  icon={<Edit size={18} color="blue" />}
+                  plain
+                  onClick={editCommentHandler}
+                ></Button>
                 <Button
                   icon={<Delete size={18} color="red" />}
                   plain
