@@ -4,8 +4,10 @@ import { MessageSquare } from 'react-feather';
 import { useDispatch, useSelector } from 'react-redux';
 import { closeModal, updateComment } from '../../../store/slices/Comments';
 import { RootState } from '../../../store/Store';
+import { Interaction } from '../../../utils/interaction/Interaction';
 
 const EditCommentModal = () => {
+  Interaction(window.document)
     const store = useSelector((state:RootState)=>state.comments)
     const dispatch = useDispatch()
     const [value,setValue] = useState<string>("")
